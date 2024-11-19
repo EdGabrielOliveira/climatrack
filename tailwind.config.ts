@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -15,4 +18,11 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    "bg-[url('/backgrounds/background.jpg')]",
+    "bg-[url('/backgrounds/frio.jpeg')]",
+    "bg-[url('/backgrounds/pouco-frio.jpg')]",
+    "bg-[url('/backgrounds/quente.jpg')]",
+    "bg-[url('/backgrounds/muito-quente.jpg')]",
+  ],
 } satisfies Config;
