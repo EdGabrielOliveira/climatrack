@@ -8,7 +8,7 @@ import ModalInfos from "@/components/Modal/ModalInfos/ModalInfos";
 
 export default function Homepage() {
   const [backgroundClass, setBackgroundClass] = useState<string>(
-    "bg-[url('/backgrounds/background.jpg')] bg-cover transition-all duration-700 ease-in-out",
+    "bg-[url('/backgrounds/background.webp')] bg-cover transition-all duration-700 ease-in-out",
   );
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);

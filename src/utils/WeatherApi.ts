@@ -38,12 +38,12 @@ export function getBackgroundClass(temp: number): string {
   const baseClass = "bg-cover transition-all duration-700 ease-in-out";
 
   if (temp <= 0) {
-    return `bg-[url('/backgrounds/frio.jpeg')] ${baseClass}`;
+    return `bg-[url('/backgrounds/frio.webp')] ${baseClass}`;
   } else if (temp <= 11) {
-    return `bg-[url('/backgrounds/pouco-frio.jpg')] ${baseClass}`;
+    return `bg-[url('/backgrounds/pouco-frio.webp')] ${baseClass}`;
   } else if (temp <= 21) {
-    return `bg-[url('/backgrounds/quente.jpg')] ${baseClass}`;
+    return `bg-[url('/backgrounds/quente.webp')] ${baseClass}`;
   } else {
-    return `bg-[url('/backgrounds/muito-quente.jpg')] ${baseClass}`;
+    return `bg-[url('/backgrounds/muito-quente.webp')] ${baseClass}`;
   }
 }

@@ -27,10 +27,10 @@ export default {
   },
   plugins: [],
   safelist: [
-    "bg-[url('/backgrounds/background.jpg')]",
-    "bg-[url('/backgrounds/frio.jpeg')]",
-    "bg-[url('/backgrounds/pouco-frio.jpg')]",
-    "bg-[url('/backgrounds/quente.jpg')]",
-    "bg-[url('/backgrounds/muito-quente.jpg')]",
+    "bg-[url('/backgrounds/background.webp')]",
+    "bg-[url('/backgrounds/frio.webp')]",
+    "bg-[url('/backgrounds/pouco-frio.webp')]",
+    "bg-[url('/backgrounds/quente.webp')]",
+    "bg-[url('/backgrounds/muito-quente.webp')]",
   ],
 } satisfies Config;
