@@ -1,15 +1,20 @@
 "use client";
+
 import React, { useRef, useState } from "react";
 import { fetchWeatherData, getBackgroundClass } from "../../utils/WeatherApi";
 import { WeatherData } from "../../utils/Types";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import ModalInfos from "@/components/Modal/ModalInfos/ModalInfos";
+import { getFlagUrl } from "../WeatherCard/WeatherFlags";
+import Image from "next/image";
 
 export default function Homepage() {
   const [backgroundClass, setBackgroundClass] = useState<string>(
     "bg-[url('/backgrounds/background.webp')] bg-cover transition-all duration-700 ease-in-out",
   );
+  const [country, setCountry] = useState<string>("");
+  const [flagUrl, setFlagUrl] = useState<string>("");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,6 +33,10 @@ export default function Homepage() {
       setWeatherData(data);
       const temp = data.main.temp;
       setBackgroundClass(getBackgroundClass(temp));
+
+      const countryCode = data.sys.country;
+      setCountry(countryCode);
+      setFlagUrl(getFlagUrl(countryCode));
     } else {
       setError("Cidade não encontrada ou erro na API.");
     }
@@ -56,9 +65,17 @@ export default function Homepage() {
           </div>
           {weatherData && (
             <>
-              <div className="text-center text-xl">
-                <h1 className="capitalize font-semibold">
-                  {weatherData.name} - {weatherData.sys.country}
+              <div className="text-center flex flex-col  gap-2 justify-center items-center text-xl">
+                <Image
+                  sizes="45px"
+                  src={flagUrl}
+                  alt={country}
+                  width={45}
+                  height={20}
+                  className="rounded-md"
+                />
+                <h1 className="capitalize font-semibold tracking-widest text-2xl">
+                  {weatherData.name}
                 </h1>
               </div>
               <div className="flex flex-col gap-6 justify-center items-center">

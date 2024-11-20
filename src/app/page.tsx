@@ -1,3 +1,4 @@
+"use client";
 import MainContainer from "@/components/Main/MainContainer";
 import React from "react";
 
