@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WeatherData } from "../../utils/Types";
+import { WeatherData } from "../../../utils/Types";
 import { WiStrongWind, WiSunrise } from "react-icons/wi";
 import { WiSunset } from "react-icons/wi";
 import { WiWindDeg } from "react-icons/wi";
