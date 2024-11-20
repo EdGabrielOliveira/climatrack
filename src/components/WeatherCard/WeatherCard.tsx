@@ -1,10 +1,11 @@
 // src/components/WeatherCard.tsx
 import React from "react";
 import { FaCloudSun } from "react-icons/fa";
-import { TbTemperatureSun } from "react-icons/tb";
+import { WiThermometer } from "react-icons/wi";
 import { WiHumidity } from "react-icons/wi";
-import { CgCompressV } from "react-icons/cg";
+import { WiBarometer } from "react-icons/wi";
 import { WeatherData } from "../../utils/Types";
+import WeartherComponnents from "./WeartherComponnents";
 
 interface WeatherCardProps {
   data: WeatherData;
@@ -20,27 +21,25 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ data }) => {
       </h1>
       <div className="flex flex-col text-center gap-10 font-normal ">
         <h1 className="capitalize">{data.weather[0].description}</h1>
-        <div className="flex gap-8 sm:text-sm">
-          <div className="flex flex-col justify-center items-center gap-2">
-            <span className="text-2xl">
-              <WiHumidity />
-            </span>
-            <h1 className="flex justify-center gap-2">
-              Umidade: <p>{data.main.humidity}%</p>
-            </h1>
-          </div>
-          <div className="flex flex-col justify-center items-center gap-2">
-            <span className="text-2xl">
-              <TbTemperatureSun />
-            </span>
-            <h1>Sensação térmica: {Math.round(data.main.feels_like)}°C</h1>
-          </div>
-          <div className="flex flex-col justify-center items-center gap-2">
-            <span className="text-2xl">
-              <CgCompressV />
-            </span>
-            <h1>Pressão: {data.main.pressure} kPa</h1>
-          </div>
+        <div className="flex gap-8 items-center justify-center text-center">
+          <WeartherComponnents
+            title={"Umidade"}
+            icon={<WiHumidity />}
+            info={`${data.main.humidity}`}
+            unit={"%"}
+          />
+          <WeartherComponnents
+            title={"Sens. térmica:"}
+            icon={<WiThermometer />}
+            info={`${Math.round(data.main.feels_like)}`}
+            unit={"°c"}
+          />
+          <WeartherComponnents
+            title={"Pressão"}
+            icon={<WiBarometer />}
+            info={`${data.main.pressure}`}
+            unit="kPa"
+          />
         </div>
       </div>
     </div>

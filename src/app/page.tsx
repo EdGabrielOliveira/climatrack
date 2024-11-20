@@ -4,10 +4,11 @@ import { fetchWeatherData, getBackgroundClass } from "../utils/WeatherApi";
 import { WeatherData } from "../utils/Types";
 import SearchInput from "../components/SearchInput/SearchInput";
 import WeatherCard from "../components/WeatherCard/WeatherCard";
+import ModalInfos from "@/components/ModalInfos/ModalInfos";
 
 export default function Homepage() {
   const [backgroundClass, setBackgroundClass] = useState<string>(
-    "bg-[url('/backgrounds/background.jpg')]  bg-cover transition-all duration-700 ease-in-out",
+    "bg-[url('/backgrounds/background.jpg')] bg-cover transition-all duration-700 ease-in-out",
   );
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -40,20 +41,17 @@ export default function Homepage() {
 
   return (
     <main
-      className={`flex flex-col justify-center items-center h-screen ${backgroundClass}`}
+      className={`flex flex-col justify-center items-center h-screen w-full ${backgroundClass} overflow-x-hidden overflow-y-hidden`}
     >
-      <title>ClimaTrack</title>
-      <div className="bg-transparent backdrop-blur-sm backdrop-brightness-[40%] rounded-2xl shadow-2xl p-10 flex flex-col gap-4">
+      <div className="bg-transparent backdrop-blur-sm backdrop-brightness-[40%] rounded-2xl shadow-2xl p-10 flex flex-col gap-4 ">
         <h1 className="text-center text-2xl pb-4 font-semibold">ClimaTrack</h1>
-        <section className="flex flex-col gap-8">
-          <div className="flex flex-col text-center gap-2 ">
-            <h1 className="text-lg font-semibold">Qual sua cidade?</h1>
+        <section className="w-[32rem] flex flex-col gap-8">
+          <div className="flex flex-col items-center text-center gap-2 ">
             <SearchInput
               onSearch={searchCity}
               onKeyPress={handleKeyPress}
               ref={inputRef}
             />
-
             {error && <p className="text-red-500">{error}</p>}
           </div>
           {weatherData && (
@@ -63,11 +61,15 @@ export default function Homepage() {
                   {weatherData.name} - {weatherData.sys.country}
                 </h1>
               </div>
-              <WeatherCard data={weatherData} />
+              <div className="flex flex-col gap-6 justify-center items-center">
+                <WeatherCard data={weatherData} />
+                <ModalInfos data={weatherData} />
+              </div>
             </>
           )}
         </section>
       </div>
+      {/* Developed by Gabriel Oliveira */}
     </main>
   );
 }
