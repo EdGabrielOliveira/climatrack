@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "ClimaTrack - Rastreando o clima",
-  description: "Rastreando o clima!",
+  description: "Previsão e monitoramento climático em tempo real.",
 };
 
 export default function RootLayout({
