@@ -52,9 +52,9 @@ export default function Homepage() {
     <main
       className={`flex flex-col justify-center items-center h-screen w-full ${backgroundClass} overflow-x-hidden overflow-y-hidden`}
     >
-      <div className="bg-transparent backdrop-blur-sm backdrop-brightness-[40%] rounded-2xl shadow-2xl p-10 flex flex-col gap-4 ">
-        <h1 className="text-center text-2xl pb-4 font-semibold">ClimaTrack</h1>
-        <section className="w-[32rem] flex flex-col gap-8">
+      <div className="bg-transparent backdrop-blur-sm backdrop-brightness-[40%] rounded-2xl shadow-2xl p-10 flex flex-col gap-4 xs:gap-2 items-center justify-center content-center self-center text-center">
+        <h1 className="text-center text-2xl pb-4 xs:pb-0 font-semibold">ClimaTrack</h1>
+        <section className="p-6 xs:p-4 pl-10 pr-10  flex flex-col gap-8 xs:gap-4 items-center justify-center md:w-[36rem] sm:w-[24rem] xs:w-[12rem]">
           <div className="flex flex-col items-center text-center gap-2 ">
             <SearchInput
               onSearch={searchCity}
@@ -65,20 +65,20 @@ export default function Homepage() {
           </div>
           {weatherData && (
             <>
-              <div className="text-center flex flex-col  gap-2 justify-center items-center text-xl">
+              <div className="text-center flex flex-col gap-2 justify-center items-center text-xl">
+                <h1 className="capitalize font-semibold tracking-widest text-2xl">
+                  {weatherData.name}
+                </h1>
                 <Image
                   sizes="45px"
                   src={flagUrl}
                   alt={country}
                   width={45}
                   height={20}
-                  className="rounded-md"
+                  className="xs:w-[40px] sm:w-[45px] rounded-lg"
                 />
-                <h1 className="capitalize font-semibold tracking-widest text-2xl">
-                  {weatherData.name}
-                </h1>
               </div>
-              <div className="flex flex-col gap-6 justify-center items-center">
+              <div className="flex flex-col gap-6 xs:gap-8 justify-center items-center">
                 <WeatherCard data={weatherData} />
                 <ModalInfos data={weatherData} />
               </div>

@@ -10,7 +10,7 @@ interface SearchInputProps {
 const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
   ({ onSearch, onKeyPress }, ref) => {
     return (
-      <div className=" w-[24rem] flex flex-col gap-4 justify-center">
+      <div className=" xs:w-[12rem] sm:w-[18rem] md:w-[24rem] flex flex-col gap-4 justify-center">
         <h1 className="text-lg font-semibold">Qual sua cidade?</h1>
         <div className="flex flex-row items-center justify-center">
           <input

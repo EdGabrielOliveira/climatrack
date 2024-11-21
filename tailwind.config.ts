@@ -12,9 +12,9 @@ export default {
         sans: ["Poppins", "sans-serif"],
       },
       screens: {
-        xs: "370px",
-        sm: "640px",
-        md: "768px",
+        xs: "360px",
+        sm: "540px",
+        md: "868px",
         lg: "1024px",
         xl: "1280px",
         "2xl": "1536px",
