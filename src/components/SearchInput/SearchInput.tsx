@@ -16,7 +16,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           <input
             ref={ref}
             type="search"
-            placeholder="Pesquisar..."
+            placeholder="Inserir Nome ou CEP"
             onKeyDown={onKeyPress}
             className="w-full h-10 rounded-lg pl-2 pr-2 text-gray-600 focus:border-green-600 placeholder:font-normal focus:outline-none rounded-tr-none rounded-br-none"
           />

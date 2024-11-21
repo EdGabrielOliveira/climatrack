@@ -9,27 +9,57 @@ if (!API_KEY) {
   );
 }
 
-export async function fetchWeatherData(city: string): Promise<WeatherData | null> {
-  if (!city || !/^[a-zA-ZÀ-ÿ\s-]+$/.test(city)) {
-    console.error("Nome da cidade inválido.");
+export async function fetchWeatherData(input: string): Promise<WeatherData | null> {
+  if (!input) {
+    console.error("Input inválido.");
     return null;
   }
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-    city,
-  )}&appid=${API_KEY}&lang=pt_br&units=metric`;
+  let url: string;
+  let cityName: string | undefined;
+
+  if (/^\d+$/.test(input)) {
+    try {
+      const geocodeResponse = await axios.get(
+        `https://api.openweathermap.org/geo/1.0/zip`,
+        {
+          params: {
+            zip: `${input},BR`,
+            appid: API_KEY,
+          },
+        },
+      );
+      const { lat, lon, name } = geocodeResponse.data;
+      if (!lat || !lon) {
+        console.error("Dados de geocodificação inválidos.");
+        return null;
+      }
+      cityName = name;
+      url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br&units=metric`;
+    } catch (error) {
+      console.error("Erro ao buscar geocodificação:", error);
+      return null;
+    }
+  } else if (/^[a-zA-ZÀ-ÿ\s-]+$/.test(input)) {
+    url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+      input,
+    )}&appid=${API_KEY}&lang=pt_br&units=metric`;
+  } else {
+    console.error("Input inválido. Digite um nome de cidade ou CEP válido.");
+    return null;
+  }
 
   try {
     const response = await axios.get(url);
-    return response.data;
-  } catch (err) {
-    if (axios.isAxiosError(err)) {
-      console.error(
-        `Erro na API: ${err.response?.status} - ${err.response?.data?.message}`,
-      );
-    } else {
-      console.error("Erro desconhecido:", err);
+    const weatherData = response.data;
+
+    if (cityName) {
+      weatherData.name = cityName;
     }
+
+    return weatherData;
+  } catch (error) {
+    console.error("Erro ao buscar dados do clima:", error);
     return null;
   }
 }
