@@ -1,6 +1,6 @@
 # ClimaTrack - Acompanhamento Climático
 
-ClimaTrack é uma aplicação web que permite aos usuários consultar as condições climáticas de qualquer cidade do mundo. Utilizando a API do OpenWeatherMap, a aplicação exibe informações como temperatura, umidade e condições climáticas, com fundo dinâmico que muda conforme a temperatura.
+ClimaTrack é uma aplicação web taotalmente resposiva que permite aos usuários consultar as condições climáticas de qualquer cidade do mundo. Utilizando a API do OpenWeatherMap, a aplicação exibe informações como temperatura, umidade e condições climáticas, com fundo dinâmico que muda conforme a temperatura.
 
 Veja aqui: https://climatrack-seven.vercel.app/
 
@@ -8,6 +8,7 @@ Veja aqui: https://climatrack-seven.vercel.app/
 
 - React
 - TypeScript
+- Next.js
 - Tailwind CSS
 - Axios
 - OpenWeatherMap API
